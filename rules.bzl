@@ -69,6 +69,9 @@ def _android_ndk_repository_impl(ctx):
         executable = False,
     )
 
+    # NDK r23c
+    ctx.delete("%s/BUILD.bazel" % clang_directory)
+
     ctx.template(
         "%s/BUILD" % clang_directory,
         Label("//:BUILD.ndk_clang.tpl"),
